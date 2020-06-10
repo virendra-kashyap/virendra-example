@@ -12,7 +12,7 @@ public class EmployeeTest {
 		 */ EmployeeService service = new EmployeeService();
 		// service.update("5edf6eb32454c200177a26a4", obj);
 		// System.out.println(obj);
-		JSONObject obj = service.get();
+		String obj = service.get();
 		System.out.println(obj);
 
 		// NObject obj = new JSONObject();

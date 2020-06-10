@@ -1,21 +1,23 @@
 package com.service;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ResourceBundle;
 
 import org.json.JSONObject;
 
 public class EmployeeService {
 	URL url = null;
-	private static final String USER_AGENT = "Mozilla/5.0";
+	private static final String USER_AGENT = "Mozilla/5.0";	
 
 	public EmployeeService() throws Exception {
-		url = new URL("https://jsonbox.io/box_e08730ae0ba32768e2a5");
+		ResourceBundle rb = ResourceBundle.getBundle("com.bundle.config");
+		String endpoint = rb.getString("endpoint");
+		System.out.println(endpoint);
+		url = new URL(endpoint);
 	}
 
 	public void add(JSONObject requestBody) throws Exception {
@@ -34,8 +36,8 @@ public class EmployeeService {
 
 	}
 
-	public JSONObject get() throws Exception {
-		JSONObject obj = null;
+	public String get() throws Exception {
+		String obj = null;
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestProperty("User-Agent", USER_AGENT);
 		conn.setDoOutput(true);
@@ -52,8 +54,7 @@ public class EmployeeService {
 				response.append(inputLine);
 			}
 			reader.close();
-			System.out.println(response.toString());
-			obj = new JSONObject(response.toString().replace("[", "").replace("]", ""));
+			obj = response.toString();
 		} else {
 			System.out.println("GET request not worked");
 		}
