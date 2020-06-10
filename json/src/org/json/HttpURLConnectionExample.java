@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class HttpURLConnectionExample {
 	private static final String USER_AGENT = "Mozilla/5.0";

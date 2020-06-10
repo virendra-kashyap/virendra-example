@@ -1,6 +1,6 @@
 package org.json;
 
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class JsonExample {
 	public static void main(String[] args) {
