@@ -1,3 +1,3 @@
 # virendra-example
 
-Hi Humans
+First, solve the problem. Then, write the code.
