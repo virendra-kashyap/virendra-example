@@ -4,12 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
+
 <jsp:include page="header.jsp" />
 <body>
 	<form action="accountList" method="post">
@@ -23,21 +18,27 @@
 		%>
 		<h1 align="center">Account List</h1>
 		<div align="center">
-			Search Name : <input type="text" name="searchByName"> <input
-				type="submit" name="operation" value="search">
-			<table border="2px">
-				<tr>
-					<th>Delete</th>
-					<th>Serial #</th>
-					<th>AccountNo</th>
-					<th>FirstName</th>
-					<th>LastName</th>
-					<th>EmailId</th>
-					<th>Password</th>
-					<th>ContactNo</th>
-					<th>Address</th>
-					<th>Balance</th>
-				</tr>
+			Search Name : <input type="text" name="searchByName">
+			<button type="submit" name="operation" value="search"
+				class="btn btn-outline-success">Search</button>
+
+			<table
+				class="table table-hover table-bordered table-">
+				<thead class="thead-dark">
+					<tr>
+						<th><input onclick="masterCheckbox(this)" type="checkbox"
+							name="ids"></th>
+						<th>Serial #</th>
+						<th>AccountNo</th>
+						<th>FirstName</th>
+						<th>LastName</th>
+						<th>EmailId</th>
+						<th>Password</th>
+						<th>ContactNo</th>
+						<th>Address</th>
+						<th>Balance</th>
+					</tr>
+				</thead>
 				<%
 					Iterator it = list.iterator();
 					while (it.hasNext()) {
@@ -59,13 +60,14 @@
 					}
 				%>
 			</table>
-			<%=pageIndex%>
-			<a href="accountList?operation=next&pageIndex=<%=pageIndex%>">Next</a>
-			<input type="submit" name="operation" value="delete">
+			<a class="btn btn-outline-primary" href="accountList?operation=next&pageIndex=<%=pageIndex%>">Next</a>
+			<button type="submit" name="operation" value="delete"
+				class="btn btn-outline-danger">Delete</button>
+
 			<%
 				if (pageIndex > 0) {
 			%>
-			<a href="accountList?operation=previous&pageIndex=<%=pageIndex%>">Previous</a>
+			<a class="btn btn-outline-primary" href="accountList?operation=previous&pageIndex=<%=pageIndex%>">Previous</a>
 			<%
 				}
 			%>

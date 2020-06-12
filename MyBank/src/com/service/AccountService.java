@@ -15,8 +15,8 @@ public class AccountService {
 
 	public AccountService() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/plus", "root", "root");
+			Class.forName("db.Driver");
+			con = DriverManager.getConnection("db.url", "db.username", "db.password");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
