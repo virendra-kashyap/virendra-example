@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import com.dto.AccountDTO;
 
@@ -15,8 +16,13 @@ public class AccountService {
 
 	public AccountService() {
 		try {
-			Class.forName("db.Driver");
-			con = DriverManager.getConnection("db.url", "db.username", "db.password");
+			ResourceBundle rb = ResourceBundle.getBundle("com.bundle.config");
+			String dbDriver = rb.getString("db.driver");
+			String dbUrl = rb.getString("db.url");
+			String username = rb.getString("db.username");
+			String password = rb.getString("db.password");
+			Class.forName(dbDriver);
+			con = DriverManager.getConnection(dbUrl, username, password);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
